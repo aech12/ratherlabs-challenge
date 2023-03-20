@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { HttpModule } from '@nestjs/axios';
 import { PrismaModule } from './prisma/prisma.module';
 // import { UserModule } from './user/user.module';
 import { Web3Module } from './web3/web3.module';
@@ -9,6 +10,7 @@ import * as Joi from 'joi';
 
 @Module({
   imports: [
+    HttpModule,
     // AppModule,
     PrismaModule,
     Web3Module,
