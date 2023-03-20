@@ -1,0 +1,4 @@
+{
+	"extends": ["custom", "next/babel", "next/core-web-vitals"],
+	"root": true
+}

@@ -1,6 +1,14 @@
 # Turborepo kitchen sink starter
 
-This is an official starter Turborepo with multiple meta-frameworks all working in harmony and sharing packages.
+This is an official starter Turborepo with multiple meta-frameworks all working in harmony and sharing packages. Node modules are installed once, and the different apps in "apps" folder use them.
+
+## Requirements
+
+- [pnpm](https://pnpm.io/installation) for installing the packages
+
+## Installation
+
+- Run `pnpm install`
 
 ## What's inside?
 
