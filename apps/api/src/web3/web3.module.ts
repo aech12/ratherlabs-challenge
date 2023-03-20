@@ -8,4 +8,4 @@ import { PoolsService } from './pools.service';
   controllers: [PoolsController],
   providers: [PoolsService],
 })
-export class LendingPoolModule {}
+export class Web3Module {}
