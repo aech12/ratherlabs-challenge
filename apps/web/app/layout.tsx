@@ -1,6 +1,6 @@
 import "../global.css";
 import Navbar from "../components/ui/Navbar";
-import { AccountProvider } from "lib/context/AccountContext";
+import { WalletProvider } from "lib/context/AccountContext";
 
 export const metadata = {
 	title: "RL Lending",
@@ -12,12 +12,12 @@ const rootStyles = "text-center"
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<html lang="en">
-			<AccountProvider>
+			<WalletProvider>
 				<body className={rootStyles}>
 					<Navbar />
 					{children}
 				</body>
-			</AccountProvider>
+			</WalletProvider>
 		</html>
 	);
 }

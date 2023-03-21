@@ -11,6 +11,6 @@ export interface Pool {
   address: string;
   name: string;
   symbol: string;
-  apy: string;
+  apy: number;
   updatedAt: string;
 }
