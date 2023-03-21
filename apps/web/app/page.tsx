@@ -1,11 +1,11 @@
 import React from "react";
 import "../styles.css";
 
-// import MainView from "../components/home/MainView";
+import ConnectWallet from "../components/ui/ConnectWallet";
 // import Tags from "../components/home/Tags";
 
 export const metadata = {
-  title: 'Home | RL Lending',
+	title: "Home | RL Lending",
 };
 
 const Home = () => (
@@ -13,6 +13,7 @@ const Home = () => (
 		<main className="">
 			<div>
 				<h1>Hello World!</h1>
+				<ConnectWallet />
 				<p>Deposits</p>
 				<p>Deposit History</p>
 				<p>Available Pools</p>

@@ -14,7 +14,7 @@ export class PoolsService {
       .pipe(
         catchError((error: AxiosError) => {
           console.error(error.response.data);
-          throw 'An error happened!';
+          throw error;
         }),
       );
 
