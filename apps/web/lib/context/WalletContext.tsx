@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, createContext, useContext, Dispatch, SetStateAction } from "react";
+import { useState, createContext, useContext } from "react";
 // types
 type Wallet = null | {
 	address: string | null;

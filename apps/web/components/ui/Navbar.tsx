@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import myImage from "../../public/logo.png";
-import WalletBalance from "../common/WalletBalance";
+import WalletBalance from "../web3/WalletBalance";
 
 const Navbar: React.FC = () => {
 	return (

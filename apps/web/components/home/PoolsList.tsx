@@ -2,6 +2,10 @@
 
 import { useState, useEffect } from "react";
 import { Pool } from "ui/types";
+import { useWeb3 } from "lib/context/Web3Context";
+import { useWallet } from "lib/context/WalletContext";
+import { supply } from "lib/utils/aaveFunctions";
+import SupplyForm from "./SupplyForm";
 
 const m_pools = [
 	{
@@ -39,25 +43,39 @@ const m_pools = [
 ];
 
 export default function PoolsList() {
+	const { pool } = useWeb3();
+	const { wallet } = useWallet();
 	const [pools, setPools] = useState<Pool[]>([]);
 
 	useEffect(() => {
 		setPools(m_pools); // mock test
 		// const fetchData = async () => {
 		// 	const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/pools`);
-		// 	const data = await res.json();
+		// 	const data: Pool[] = await res.json();
 		// 	setPools(data);
 		// };
 		// fetchData();
 	}, []);
 
+	const supplyToPool = async ({ amount, address }: { amount: number; address: string }) => {
+		if (!wallet?.address || !pool) return;
+		const res = await supply(pool, wallet?.address, address, String(amount));
+		console.log("RES", res);
+	};
+
 	return (
 		<ul className="space-y-4">
-			{pools.map((pool) => (
+			{pools.map((pool: Pool) => (
 				<li key={pool.address} className="border border-slate-900 p-4 rounded-md">
 					<h3 className="text-lg font-semibold">{pool.name}</h3>
 					<p>Symbol: {pool.symbol}</p>
 					<p>APY: {pool.apy}</p>
+					<p>APY: {pool.apy}</p>
+					<p>USD liquidity: {pool.liquidity.usd}</p>
+					<p>ETH liquidity: {pool.liquidity.eth}</p>
+					<p>USD price: {pool.price.eth}</p>
+					<p>ETH price: {pool.price.eth}</p>
+					<SupplyForm address={pool.address} supplyToPool={supplyToPool} />
 				</li>
 			))}
 		</ul>

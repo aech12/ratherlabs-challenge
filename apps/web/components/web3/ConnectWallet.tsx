@@ -2,10 +2,19 @@
 
 import { useEffect } from "react";
 import { ethers } from "ethers";
-import { useWallet } from "lib/context/AccountContext";
+import { useWallet } from "lib/context/WalletContext";
 
 export default function ConnectButton() {
 	const { wallet, setWallet } = useWallet();
+
+	useEffect(() => {
+		console.log("UPDATE ACC")
+		const onAccChange = async () => {
+			await connectWallet();
+		};
+
+		onAccChange();
+	}, [(window as WindowEthereum).ethereum as any]);
 
 	const connectWallet = async () => {
 		// return if wallet is already connected
@@ -21,7 +30,7 @@ export default function ConnectButton() {
 			// asign wallet data to state
 			const address = await signer.getAddress();
 			const balanceInWei = await provider.getBalance(address);
-			setWallet({ address, balance: ethers.utils.formatEther(balanceInWei)});
+			setWallet({ address, balance: ethers.utils.formatEther(balanceInWei) });
 		}
 	};
 
